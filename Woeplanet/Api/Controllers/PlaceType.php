@@ -108,6 +108,7 @@ class PlaceType extends Controller {
         return $this->c['search']->search([
             'index' => Index::INDEX,
             'type' => Index::TYPE_PLACETYPES,
+            'size' => 50,
             'body' => [
                 'query' => [
                     'bool' => [
