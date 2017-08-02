@@ -89,16 +89,16 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v5.2.0",
+            "version": "v5.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "dc57bbcd4be2c9061ebe5be59058ea8bdebc904e"
+                "reference": "50e5b1c63db68839b8acc1f4766769570a27a448"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/dc57bbcd4be2c9061ebe5be59058ea8bdebc904e",
-                "reference": "dc57bbcd4be2c9061ebe5be59058ea8bdebc904e",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/50e5b1c63db68839b8acc1f4766769570a27a448",
+                "reference": "50e5b1c63db68839b8acc1f4766769570a27a448",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +140,7 @@
                 "elasticsearch",
                 "search"
             ],
-            "time": "2017-04-12T20:40:50+00:00"
+            "time": "2017-07-19T18:44:30+00:00"
         },
         {
             "name": "guzzlehttp/ringphp",
@@ -366,16 +366,16 @@
         },
         {
             "name": "pimple/pimple",
-            "version": "v3.1.0",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "279b56046fb368deacf77e2f8f3bdcea45cc367a"
+                "reference": "4d45fb62d96418396ec58ba76e6f065bca16e10a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/279b56046fb368deacf77e2f8f3bdcea45cc367a",
-                "reference": "279b56046fb368deacf77e2f8f3bdcea45cc367a",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/4d45fb62d96418396ec58ba76e6f065bca16e10a",
+                "reference": "4d45fb62d96418396ec58ba76e6f065bca16e10a",
                 "shasum": ""
             },
             "require": {
@@ -388,7 +388,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.1.x-dev"
+                    "dev-master": "3.2.x-dev"
                 }
             },
             "autoload": {
@@ -412,7 +412,7 @@
                 "container",
                 "dependency injection"
             ],
-            "time": "2017-07-03T14:06:46+00:00"
+            "time": "2017-07-23T07:32:15+00:00"
         },
         {
             "name": "psr/container",
@@ -807,12 +807,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/woeplanet/woeplanet-tools.git",
-                "reference": "9f9713d7c9fd22513ac85ec2e84d6d2ae8947a6d"
+                "reference": "03dd656c34576c45fd92f2bcee1ce647fdadcb9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/woeplanet/woeplanet-tools/zipball/9f9713d7c9fd22513ac85ec2e84d6d2ae8947a6d",
-                "reference": "9f9713d7c9fd22513ac85ec2e84d6d2ae8947a6d",
+                "url": "https://api.github.com/repos/woeplanet/woeplanet-tools/zipball/03dd656c34576c45fd92f2bcee1ce647fdadcb9b",
+                "reference": "03dd656c34576c45fd92f2bcee1ce647fdadcb9b",
                 "shasum": ""
             },
             "type": "library",
@@ -835,7 +835,7 @@
                 "source": "https://github.com/woeplanet/woeplanet-tools/tree/master",
                 "issues": "https://github.com/woeplanet/woeplanet-tools/issues"
             },
-            "time": "2017-07-05 09:17:20"
+            "time": "2017-07-20 16:07:05"
         }
     ],
     "packages-dev": [],
