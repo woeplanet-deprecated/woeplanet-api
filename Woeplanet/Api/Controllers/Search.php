@@ -147,7 +147,7 @@ class Search extends Controller {
             }
 
             if ($params['query']) {
-                $doc['api:raw_query'] = $query;
+                $doc['api:query'] = $query;
             }
 
             return $this->response($response, $doc['api:status']['code'], $doc);
