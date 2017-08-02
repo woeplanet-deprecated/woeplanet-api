@@ -1,20 +1,16 @@
 {
     "name": "woeplanet/woeplanet-api",
-    "description": "The source code for api.woeplanet.com",
+    "description": "The Woeplanet RESTful API",
     "type": "project",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Gary Gale",
-            "email": "gary@vicchi.org"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "https://github.com/woeplanet/woeplanet-tools"
-        }
-    ],    
+    "authors": [{
+        "name": "Gary Gale",
+        "email": "gary@vicchi.org"
+    }],
+    "repositories": [{
+        "type": "vcs",
+        "url": "https://github.com/woeplanet/woeplanet-tools"
+    }],
     "require": {
         "slim/slim": "^3.8",
         "monolog/monolog": "^1.23",
