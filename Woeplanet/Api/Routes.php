@@ -6,6 +6,8 @@ class Routes {
     const PLACE = '/place/{id}';
     const PLACETYPES = '/placetypes';
     const PLACETYPE = '/placetype/{id}';
+    const COUNTRIES = '/countries';
+    const COUNTRY = '/country/{code}';
     const SEARCH = '/search';
     const SEARCH_FIELDS = '/search/fields';
     const SEARCH_NAMES = '/search/names';

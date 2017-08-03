@@ -13,6 +13,7 @@ class ParamBuilder {
 
         switch ($route) {
             case Routes::PLACE:
+            case Routes::COUNTRY:
                 $params = [
                     Parameters::BOUNDARY => $this->toBoolean($request->getQueryParam(Parameters::BOUNDARY, false)),
                     Parameters::SUPERCEDED => $this->toBoolean($request->getQueryParam(Parameters::SUPERCEDED, true)),
@@ -20,7 +21,16 @@ class ParamBuilder {
                     Parameters::PROPERTIES => $request->getQueryParam(Parameters::PROPERTIES, Parameters::PROPERTIES_DEFAULT)
                 ];
                 break;
-
+            case Routes::COUNTRIES:
+                $params = [
+                    Parameters::FROM => intval($request->getQueryParam(Parameters::FROM, Parameters::FROM_DEFAULT)),
+                    Parameters::SIZE => intval($request->getQueryParam(Parameters::SIZE, Parameters::SIZE_DEFAULT)),
+                    Parameters::BOUNDARY => $this->toBoolean($request->getQueryParam(Parameters::BOUNDARY, false)),
+                    Parameters::SUPERCEDED => $this->toBoolean($request->getQueryParam(Parameters::SUPERCEDED, true)),
+                    Parameters::UNKNOWN => $this->toBoolean($request->getQueryParam(Parameters::UNKNOWN, false)),
+                    Parameters::PROPERTIES => $request->getQueryParam(Parameters::PROPERTIES, Parameters::PROPERTIES_DEFAULT)
+                ];
+                break;
             case Routes::SEARCH:
             case Routes::SEARCH_NULL_ISLAND:
                 $params = [

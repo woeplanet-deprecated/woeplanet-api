@@ -110,6 +110,16 @@ $validators = [
         Parameters::SUPERCEDED => $supercededValidator,
         Parameters::PROPERTIES => $propertiesValidator
     ]),
+    Routes::COUNTRY => new Validation([
+        Parameters::BOUNDARY => $boundaryValidator,
+        Parameters::SUPERCEDED => $supercededValidator,
+        Parameters::PROPERTIES => $propertiesValidator
+    ]),
+    Routes::COUNTRIES => new Validation([
+        Parameters::BOUNDARY => $boundaryValidator,
+        Parameters::SUPERCEDED => $supercededValidator,
+        Parameters::PROPERTIES => $propertiesValidator
+    ]),
     Routes::SEARCH => new Validation([
         Parameters::FROM => $fromValidator,
         Parameters::SIZE => $sizeValidator,
@@ -217,7 +227,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiUse PropertiesParam
      */
     $this->get('/place/{id}', \Woeplanet\API\Controllers\Place::class . ':getPlace')
-    ->add($validators[Routes::PLACE]);
+        ->add($validators[Routes::PLACE]);
 
     /**
      * @api {get} /v1/placetypes Get all placetypes
@@ -225,6 +235,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiGroup Placetypes
      */
     $this->get('/placetypes', \Woeplanet\API\Controllers\PlaceType::class . ':getPlaceTypes');
+
     /**
      * @api {get} /v1/placetype/:id Get a placetype
      * @apiName getPlaceType
@@ -232,6 +243,31 @@ $app->group('/v1', function () use ($validators) {
      * @apiParam {Number} id The placetype's unique ID
      */
     $this->get('/placetype/{id}', \Woeplanet\API\Controllers\PlaceType::class . ':getPlaceType');
+
+    /**
+     * @api {get} /v1/countries Get all country places
+     * @apiName getCountries
+     * @apiGroup Countries
+     * @apiUse FromParam
+     * @apiUse SizeParam
+     * @apiUse BoundaryParam
+     * @apiUse SupercededParam
+     * @apiUse PropertiesParam
+     */
+    $this->get('/countries', \Woeplanet\API\Controllers\Country::class . ':getCountries')
+        ->add($validators[Routes::COUNTRIES]);
+
+    /**
+     * @api {get} /v1/country/:iso Get a country place
+     * @apiName getCountry
+     * @apiGroup Countries
+     * @apiParam {String} iso The country's ISO 3166-1 Alpha 2 code
+     * @apiUse BoundaryParam
+     * @apiUse SupercededParam
+     * @apiUse PropertiesParam
+     */
+    $this->get('/country/{iso}', \Woeplanet\API\Controllers\Country::class . ':getCountry')
+        ->add($validators[Routes::COUNTRY]);
 
     /**
      * @api {get} /v1/search Search and page through all places
@@ -249,7 +285,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiUse CountryCodeFilter
      */
     $this->get('/search', \Woeplanet\API\Controllers\Search::class . ':search')
-    ->add($validators[Routes::SEARCH]);
+        ->add($validators[Routes::SEARCH]);
 
     /**
      * @api {get} /v1/search/fields Search all place fields for a query string
@@ -268,7 +304,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiUse CountryCodeFilter
      */
     $this->get('/search/fields', \Woeplanet\API\Controllers\Search::class . ':searchFields')
-    ->add($validators[Routes::SEARCH_FIELDS]);
+        ->add($validators[Routes::SEARCH_FIELDS]);
 
     /**
      * @api {get} /v1/search/names Search all place name fields for a query string
@@ -287,7 +323,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiUse CountryCodeFilter
      */
     $this->get('/search/names', \Woeplanet\API\Controllers\Search::class . ':searchNames')
-    ->add($validators[Routes::SEARCH_NAMES]);
+        ->add($validators[Routes::SEARCH_NAMES]);
 
     /**
      * @api {get} /v1/search/preferred Search all preferred place name fields for a query string
@@ -306,7 +342,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiUse CountryCodeFilter
      */
     $this->get('/search/preferred', \Woeplanet\API\Controllers\Search::class . ':searchPreferred')
-    ->add($validators[Routes::SEARCH_PREFERRED]);
+        ->add($validators[Routes::SEARCH_PREFERRED]);
 
     /**
      * @api {get} /v1/search/alternate Search all alternate place name fields for a query string
@@ -325,7 +361,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiUse CountryCodeFilter
      */
     $this->get('/search/alternate', \Woeplanet\API\Controllers\Search::class . ':searchAlternate')
-    ->add($validators[Routes::SEARCH_ALTERNATE]);
+        ->add($validators[Routes::SEARCH_ALTERNATE]);
 
     /**
      * @api {get} /v1/search/name Search the default place name field for a query string
@@ -344,7 +380,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiUse CountryCodeFilter
      */
     $this->get('/search/name', \Woeplanet\API\Controllers\Search::class . ':searchName')
-    ->add($validators[Routes::SEARCH_NAME]);
+        ->add($validators[Routes::SEARCH_NAME]);
 
     /**
      * @api {get} /v1/search/null-island Search all places that visit Null Island (have no coordinates)
@@ -362,7 +398,7 @@ $app->group('/v1', function () use ($validators) {
      * @apiUse CountryCodeFilter
      */
     $this->get('/search/null-island', \Woeplanet\API\Controllers\Search::class . ':searchNullIsland')
-    ->add($validators[Routes::SEARCH_NULL_ISLAND]);
+        ->add($validators[Routes::SEARCH_NULL_ISLAND]);
 
     /**
      * @api {get} /v1/meta Returns supporting metadata about Woeplanet
