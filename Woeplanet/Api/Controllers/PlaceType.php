@@ -41,7 +41,6 @@ class PlaceType extends Controller {
             }
 
             catch (\Exception $e) {
-                return $this->response($response, $status['code'], $status);
                 $data = [
                     'api:status' => [
                         'code' => 503,
