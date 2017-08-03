@@ -95,17 +95,17 @@ class SearchQueryBuilder {
                             ],
                             'weight' => 2.0
                         ]
-                    ]
-                ],
-                'query' => [
-                    'bool' => [
-                        'must' => [],
-                        'must_not' => [],
-                        'should' => [],
-                        'filter' => []
-                    ]
-                ],
-                'score_mode' => 'multiply'
+                    ],
+                    'query' => [
+                        'bool' => [
+                            'must' => [],
+                            'must_not' => [],
+                            'should' => [],
+                            'filter' => []
+                        ]
+                    ],
+                    'score_mode' => 'multiply'
+                ]
             ]
         ];
     }
@@ -154,7 +154,7 @@ class SearchQueryBuilder {
                 $query['query']['function_score']['functions'][0]['filter']['term']['names_preferred'] = $params['q'];
                 $query['query']['function_score']['functions'][1]['filter']['term']['names_all'] = $params['q'];
                 $query['query']['function_score']['functions'][2]['filter']['term']['woe:name'] = $params['q'];
-                $query['query']['query']['bool']['must'][] = [
+                $query['query']['function_score']['query']['bool']['must'][] = [
                     'match' => [
                         '_all' => [
                             'query' => $params['q'],
@@ -163,14 +163,14 @@ class SearchQueryBuilder {
                     ]
                 ];
                 if (!$params['superceded']) {
-                    $query['query']['query']['bool']['must_not'][] = [
+                    $query['query']['function_score']['query']['bool']['must_not'][] = [
                         'exists' => [
                             'field' => 'properties.woe:superceded'
                         ]
                     ];
                 }
                 if (!$params['unknown']) {
-                    $query['query']['query']['bool']['must_not'][] = [
+                    $query['query']['function_score']['query']['bool']['must_not'][] = [
                         'term' => [
                             'woe:placetype' => 0
                         ]
@@ -178,10 +178,10 @@ class SearchQueryBuilder {
                 }
 
                 if ($params['placetype'] !== Parameters::PLACETYPE_DEFAULT) {
-                    $query['query']['query']['bool']['filter'][] = $this->addPlacetypeFilter($params['placetype']);
+                    $query['query']['function_score']['query']['bool']['filter'][] = $this->addPlacetypeFilter($params['placetype']);
                 }
                 if ($params['iso'] !== NULL) {
-                    $query['query']['query']['bool']['filter'][] = $this->addIsoFilter($params['iso']);
+                    $query['query']['function_score']['query']['bool']['filter'][] = $this->addIsoFilter($params['iso']);
                 }
                 $query['sort'][] = $this->sort;
                 if ($params['facets']) {
@@ -399,7 +399,6 @@ class SearchQueryBuilder {
                 if ($params['facets']) {
                     $query['aggregations'] = $this->facets;
                 }
-                error_log(json_encode($query));
                 break;
 
             default:
