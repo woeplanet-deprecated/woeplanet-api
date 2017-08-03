@@ -32,7 +32,6 @@ class Controller {
 
         if ($request->getAttribute('has_errors')) {
             $errors = $request->getAttribute('errors');
-            error_log(var_export($errors, true));
 
             $status = [
                 'api:status' => [
